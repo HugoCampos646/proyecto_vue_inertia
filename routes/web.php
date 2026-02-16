@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD Usuarios (práctica)
     Route::resource('usuarios', UserController::class);
+
 });
 
 require __DIR__.'/auth.php';
