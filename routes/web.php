@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProyectoController;
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
@@ -16,8 +18,12 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    // CRUD Usuarios (práctica)
+    // CRUD Usuarios
     Route::resource('usuarios', UserController::class);
+
+    // CRUD Proyectos
+    Route::resource('proyectos', ProyectoController::class);
+
 
 });
 
