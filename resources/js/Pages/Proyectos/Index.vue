@@ -25,11 +25,12 @@ defineProps({
             <table class="w-full">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="p-3 text-left">ID</th>
-                        <th class="p-3 text-left">Título</th>
-                        <th class="p-3 text-left">Fecha inicio</th>
-                        <th class="p-3 text-left">Fecha fin</th>
-                        <th class="p-3 text-left">Acciones</th>
+                        <th class="p-4 text-left">ID</th>
+                        <th class="p-4 text-left">Título</th>
+                        <th class="p-4 text-left">Creador</th>
+                        <th class="p-4 text-left">Fecha inicio</th>
+                        <th class="p-4 text-left">Fecha fin</th>
+                        <th class="p-4 text-left">Acciones</th>
                     </tr>
                 </thead>
 
@@ -41,6 +42,7 @@ defineProps({
                     >
                         <td class="p-3">{{ proyecto.id }}</td>
                         <td class="p-3">{{ proyecto.titulo }}</td>
+                        <td class="p-3">{{ proyecto.user?.name }}</td>
                         <td class="p-3">{{ proyecto.fecha_inicio }}</td>
                         <td class="p-3">{{ proyecto.fecha_fin }}</td>
                         <td class="p-3 space-x-2">

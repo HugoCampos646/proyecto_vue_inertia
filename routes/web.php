@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\AlumnoController;
 
 
 Route::get('/', function () {

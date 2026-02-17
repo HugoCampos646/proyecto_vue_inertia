@@ -13,7 +13,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::all();
+        $proyectos = Proyecto::with('user')->get();
 
         return Inertia::render('Proyectos/Index', [
             'proyectos' => $proyectos
@@ -31,6 +31,7 @@ class ProyectoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -43,6 +44,7 @@ class ProyectoController extends Controller
             'titulo' => $request->titulo,
             'fecha_inicio' => $request->fecha_inicio,
             'fecha_fin' => $request->fecha_fin,
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('proyectos.index');

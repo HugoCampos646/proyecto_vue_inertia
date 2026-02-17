@@ -10,5 +10,17 @@ class Proyecto extends Model
         'titulo',
         'fecha_inicio',
         'fecha_fin',
+        'user_id',
     ];
+
+    public function alumnos()
+    {
+        return $this->hasMany(Alumno::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

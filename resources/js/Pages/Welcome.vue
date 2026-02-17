@@ -34,7 +34,7 @@ import { Head, Link } from '@inertiajs/vue3';
             </div>
 
             <!-- Usuario logueado -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 
                 <Link
                     href="/usuarios"
@@ -50,14 +50,6 @@ import { Head, Link } from '@inertiajs/vue3';
                 >
                     <h2 class="text-xl font-semibold">Proyectos</h2>
                     <p class="text-gray-500 text-sm">Gestionar proyectos</p>
-                </Link>
-
-                <Link
-                    href="/alumnos"
-                    class="bg-white border p-6 rounded-lg shadow hover:bg-gray-100"
-                >
-                    <h2 class="text-xl font-semibold">Alumnos</h2>
-                    <p class="text-gray-500 text-sm">Gestionar alumnos</p>
                 </Link>
 
             </div>
