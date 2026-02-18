@@ -36,7 +36,7 @@ const user = page.props.auth?.user;
                     
                     <!-- Usuario logueado -->
                     <span class="text-sm text-gray-300">
-                        {{ user?.name }}
+                        {{ user?.name }} ({{ user?.role }})
                     </span>
 
                     <!-- Futuro selector de idioma -->

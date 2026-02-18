@@ -1,6 +1,10 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
+
+const page = usePage();
+const user = page.props.auth.user;
 
 defineProps({
     proyectos: Array
@@ -14,13 +18,15 @@ defineProps({
         <div class="p-8">
             <h1 class="text-3xl font-bold mb-6">Gestión de Proyectos</h1>
 
-            <!-- Botón crear -->
+            <!-- Botón crear (solo profesores) -->
             <Link
+                v-if="user?.role === 'profesor'"
                 href="/proyectos/create"
                 class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
                 Crear proyecto
             </Link>
+
 
             <!-- Tabla -->
             <div class="mt-6 bg-white shadow rounded-lg overflow-hidden">
@@ -56,21 +62,24 @@ defineProps({
                                     Ver
                                 </Link>
 
-                                <Link
-                                    :href="`/proyectos/${proyecto.id}/edit`"
-                                    class="bg-yellow-500 text-white px-3 py-1 rounded"
-                                >
-                                    Editar
-                                </Link>
+                                <!-- SOLO profesores -->
+                                <template v-if="user?.role === 'profesor'">
+                                    <Link
+                                        :href="`/proyectos/${proyecto.id}/edit`"
+                                        class="bg-yellow-500 text-white px-3 py-1 rounded"
+                                    >
+                                        Editar
+                                    </Link>
 
-                                <Link
-                                    :href="`/proyectos/${proyecto.id}`"
-                                    method="delete"
-                                    as="button"
-                                    class="bg-red-600 text-white px-3 py-1 rounded"
-                                >
-                                    Borrar
-                                </Link>
+                                    <Link
+                                        :href="`/proyectos/${proyecto.id}`"
+                                        method="delete"
+                                        as="button"
+                                        class="bg-red-600 text-white px-3 py-1 rounded"
+                                    >
+                                        Borrar
+                                    </Link>
+                                </template>
 
                             </td>
                         </tr>

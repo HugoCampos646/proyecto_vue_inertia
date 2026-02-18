@@ -25,6 +25,10 @@ class ProyectoController extends Controller
      */
     public function create()
     {
+         if (auth()->user()->role !== 'profesor') {
+            abort(403, 'No tienes permiso para crear proyectos');
+        }
+
         return Inertia::render('Proyectos/Create');
     }
 
@@ -34,6 +38,10 @@ class ProyectoController extends Controller
 
     public function store(Request $request)
     {
+        if (auth()->user()->role !== 'profesor') {
+            abort(403, 'No tienes permiso para crear proyectos');
+        }
+
         $request->validate([
             'titulo' => 'required',
             'fecha_inicio' => 'required|date',
@@ -65,6 +73,10 @@ class ProyectoController extends Controller
      */
     public function edit(Proyecto $proyecto)
     {
+        if (auth()->user()->role !== 'profesor') {
+            abort(403, 'No tienes permiso');
+        }
+
         return Inertia::render('Proyectos/Edit', [
             'proyecto' => $proyecto
         ]);
@@ -75,6 +87,11 @@ class ProyectoController extends Controller
      */
     public function update(Request $request, Proyecto $proyecto)
     {
+
+        if (auth()->user()->role !== 'profesor') {
+            abort(403, 'No tienes permiso');
+        }
+
         $request->validate([
             'titulo' => 'required',
             'fecha_inicio' => 'required|date',
@@ -95,6 +112,10 @@ class ProyectoController extends Controller
      */
     public function destroy(Proyecto $proyecto)
     {
+        if (auth()->user()->role !== 'profesor') {
+            abort(403, 'No tienes permiso');
+        }
+        
         $proyecto->delete();
 
         return redirect()->route('proyectos.index');

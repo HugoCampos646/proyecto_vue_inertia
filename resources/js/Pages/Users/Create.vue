@@ -5,6 +5,7 @@ const form = useForm({
     name: '',
     email: '',
     password: '',
+    role: 'alumno'
 });
 </script>
 
@@ -52,6 +53,16 @@ const form = useForm({
                     {{ form.errors.email }}
                 </div>
             </div>
+
+            <!-- Rol -->
+            <div class="mt-4">
+                <label class="block">Rol</label>
+                <select v-model="form.role" class="border rounded w-full p-2">
+                    <option value="alumno">Alumno</option>
+                    <option value="profesor">Profesor</option>
+                </select>
+            </div>
+
 
             <!-- Password -->
             <div>
