@@ -1,59 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyecto de Gestión de Usuarios y Proyectos (Laravel + Vue + Inertia)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es una aplicación web desarrollada con Laravel en el backend y Vue mediante Inertia en el frontend. La aplicación permite gestionar usuarios y proyectos dentro de un mismo sistema, con control de roles y autenticación.
 
-## About Laravel
+## Descripción general
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+La aplicación simula un pequeño panel de gestión donde existen usuarios con distintos roles y proyectos asociados a ellos. Está pensada como práctica de desarrollo full stack utilizando Laravel sin Blade tradicional, trabajando con Vue como interfaz.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Se ha utilizado Breeze con Inertia para la autenticación y la estructura base del frontend.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Funcionalidades principales
 
-## Learning Laravel
+### Autenticación
+- Registro de usuarios
+- Inicio de sesión
+- Cierre de sesión
+- Acceso protegido mediante middleware (solo usuarios logueados)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Gestión de usuarios (CRUD)
+- Listado de usuarios
+- Creación de nuevos usuarios
+- Edición de usuarios
+- Eliminación de usuarios
+- Asignación de rol (alumno o profesor)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Sistema de roles
+Existen dos tipos de usuarios:
+- Profesor
+- Alumno
 
-## Laravel Sponsors
+Restricciones:
+- Los profesores pueden crear, editar y borrar proyectos
+- Los alumnos solo pueden ver los proyectos (no pueden modificarlos)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Gestión de proyectos (CRUD)
+- Listado de proyectos
+- Crear proyectos (solo profesores)
+- Ver detalles de un proyecto
+- Editar proyectos (solo profesores)
+- Eliminar proyectos (solo profesores)
+- Cada proyecto queda asociado al usuario que lo crea
+- En la tabla de proyectos se muestra el creador del proyecto
 
-### Premium Partners
+### Interfaz
+- SPA con Vue + Inertia
+- Navegación sin recargas completas
+- Menú superior con acceso a:
+  - Proyectos
+  - Usuarios
+  - Cerrar sesión
+- Diseño sencillo con Tailwind CSS
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Tecnologías utilizadas
+- Laravel (backend y API)
+- Vue 3 (frontend)
+- Inertia.js (conexión entre Laravel y Vue)
+- Breeze (autenticación)
+- SQLite (base de datos)
+- Tailwind CSS (estilos)
 
-## Contributing
+## Base de datos
+El proyecto utiliza SQLite y cuenta principalmente con:
+- Tabla `users` (usuarios con rol)
+- Tabla `proyectos` (proyectos vinculados a un usuario mediante `user_id`)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Instalación y ejecución
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Clonar el repositorio:
+```bash
+git clone <url-del-repositorio>
+cd proyecto_vue_inertia
